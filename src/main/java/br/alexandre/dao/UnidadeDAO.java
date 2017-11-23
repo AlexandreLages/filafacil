@@ -34,4 +34,10 @@ private final Session session;
 				.add(Restrictions.eq("empresa.id", id))
 				.list();
 	}
+	
+	public Unidade pesquisarPorId(long id) {
+		return (Unidade) session.createCriteria(Unidade.class)
+				.add(Restrictions.eq("id", id))
+				.uniqueResult();
+	}
 }

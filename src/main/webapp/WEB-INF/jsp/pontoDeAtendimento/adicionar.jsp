@@ -58,26 +58,17 @@
       	</nav>
       </div>
       <main class="mdl-layout__content mdl-color--grey-100">
-      	<form action="<c:url value="/unidade/adicionar"/>" method="post">
+      	<form action="<c:url value="/ponto/adicionar"/>" method="post">
       		<span class="mdl-chip">
-	    		<span class="mdl-chip__text">Adicionar Unidade</span>
+	    		<span class="mdl-chip__text">Adicionar Ponto</span>
 			</span>
 			<br>
 			<div class="mdl-textfield mdl-js-textfield">
-	      		<input class="mdl-textfield__input" type="text" id="nomeEmpresa" name="unidade.nome"/>
-	    		<label class="mdl-textfield__label" for="nomeEmpresa">Nome da Unidade*</label>
+	      		<input class="mdl-textfield__input" type="text" id="nomeEmpresa" name="ponto.nome"/>
+	    		<label class="mdl-textfield__label" for="nomeEmpresa">Nome da ponto*</label>
 	      	</div>
 	      	<br>
-	      	<div class="mdl-textfield mdl-js-textfield">
-	      		<textarea class="mdl-textfield__input" rows="2" id="descricaoEmpresa" name="unidade.endereco"></textarea>
-				<label class="mdl-textfield__label" for="descricaoEmpresa">Endereço da Unidade*</label>
-			</div>
-			<br>
-			<div class="mdl-textfield mdl-js-textfield">
-	      		<textarea class="mdl-textfield__input" rows="2" id="descricaoEmpresa" name="unidade.descricao"></textarea>
-				<label class="mdl-textfield__label" for="descricaoEmpresa">Descrição da Unidade</label>
-			</div>
-			<br>
+	      	<input class="mdl-textfield__input" type="hidden" id="nomeEmpresa" name="idUnidade" value="${idUnidade}"/>
 			<button class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored mdl-color-text--white">
 	  			Adicionar
 	  		</button>

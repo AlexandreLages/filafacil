@@ -17,5 +17,7 @@
 		<mapping class="br.alexandre.model.Empresa"/>
 		<mapping class="br.alexandre.model.Usuario"/>
 		<mapping class="br.alexandre.model.Unidade"/>
+		<mapping class="br.alexandre.model.PontoDeAtendimento"/>
+		<mapping class="br.alexandre.model.Fila"/>
 	</session-factory>
 </hibernate-configuration>

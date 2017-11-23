@@ -36,31 +36,33 @@
   	<div class="demo-layout mdl-layout mdl-js-layout mdl-layout--fixed-drawer mdl-layout--fixed-header">
       <header class="demo-header mdl-layout__header mdl-color--grey-100 mdl-color-text--grey-600">
         <div class="mdl-layout__header-row">
-          <span class="mdl-layout-title">${usuarioLogado.usuario.empresa.nome }</span>
+          <span class="mdl-layout-title">${usuarioLogado.usuario.empresa.nome } - Unidades Da Empresa</span>
           <div class="mdl-layout-spacer"></div>
           <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon" id="hdrbtn">
             <i class="material-icons">more_vert</i>
           </button>
           <ul class="mdl-menu mdl-js-menu mdl-js-ripple-effect mdl-menu--bottom-right" for="hdrbtn">
-            <li class="mdl-menu__item">Sair</li>
+            <li class="mdl-menu__item"><a href="${linkTo[LoginController].logout }">Sair</a></li>
           </ul>
         </div>
       </header>
       <div class="demo-drawer mdl-layout__drawer mdl-color--blue-grey-900 mdl-color-text--blue-grey-50">
       	<header class="demo-drawer-header">
       		<div class="demo-avatar-dropdown">
-      			<span>${usuarioLogado.usuario.nome}</span>
+      			<span>${usuarioLogado.usuario.nome} - ${usuarioLogado.usuario.empresa.nome}</span>
       			<div class="mdl-layout-spacer"></div>
       		</div>
       	</header>
       	<nav class="demo-navigation mdl-navigation mdl-color--blue-grey-800">
-      		<a class="mdl-navigation__link" href="${linkTo[UnidadeController].telaInicial}"><i class="mdl-color-text--blue-grey-400 material-icons" role="presentation">home</i>Unidades</a>
+      		<a class="mdl-navigation__link" href="${linkTo[UnidadeController].telaInicial}"><i class="mdl-color-text--blue-grey-400 material-icons" role="presentation">home</i>Página Inicial</a>
       	</nav>
       </div>
       <main class="mdl-layout__content mdl-color--grey-100">
+      	<c:if test="${mensagem != null }">
       	<span class="mdl-chip">
-    		<span class="mdl-chip__text">Unidades da Empresa</span>
+    		<span class="mdl-chip__text">${mensagem}</span>
 		</span>	
+		</c:if>
 		<br>
 		<table class="mdl-data-table mdl-js-data-table mdl-shadow--2dp" style="margin:auto;" width="70%">
 			<thead>
@@ -68,6 +70,7 @@
       				<th class="mdl-data-table__cell--non-numeric">Nome da Unidade</th>
       				<th class="mdl-data-table__cell--non-numeric">Endereço</th>
       				<th class="mdl-data-table__cell--non-numeric">Descrição</th>
+      				<th class="mdl-data-table__cell--non-numeric">Pontos de Atendimento</th>
     			</tr>
   			</thead>
   			<tbody>
@@ -76,13 +79,18 @@
   						<td class="mdl-data-table__cell--non-numeric">${unidade.nome }</td>
   						<td class="mdl-data-table__cell--non-numeric">${unidade.endereco }</td>
   						<td class="mdl-data-table__cell--non-numeric">${unidade.descricao }</td>
+  						<td class="mdl-data-table__cell--non-numeric">
+  							<a href="${linkTo[PontoDeAtendimentoController].telaInicial(unidade.id)}">
+  								<i class="mdl-color-text--blue-grey-400 material-icons" role="presentation">input</i>
+  							</a>
+  						</td>
   					</tr>
   				</c:forEach>
   			</tbody>
 		</table>
       </main>
     </div>
-    <a href="${linkTo[UnidadeController].adicionar}" id="view-source" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--colored mdl-color-text--white">Adicionar</a>
+    <a href="${linkTo[UnidadeController].adicionar}" id="view-source" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--colored mdl-color-text--white">Adicionar Unidade</a>
     <script src="https://code.getmdl.io/1.3.0/material.min.js"></script>
   </body>
 </html>

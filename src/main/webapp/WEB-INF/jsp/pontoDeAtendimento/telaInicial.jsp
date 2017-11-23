@@ -36,7 +36,7 @@
   	<div class="demo-layout mdl-layout mdl-js-layout mdl-layout--fixed-drawer mdl-layout--fixed-header">
       <header class="demo-header mdl-layout__header mdl-color--grey-100 mdl-color-text--grey-600">
         <div class="mdl-layout__header-row">
-          <span class="mdl-layout-title">${usuarioLogado.usuario.empresa.nome }</span>
+          <span class="mdl-layout-title">${unidade.nome } - Pontos de Atendimento da Unidade</span>
           <div class="mdl-layout-spacer"></div>
           <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon" id="hdrbtn">
             <i class="material-icons">more_vert</i>
@@ -49,41 +49,40 @@
       <div class="demo-drawer mdl-layout__drawer mdl-color--blue-grey-900 mdl-color-text--blue-grey-50">
       	<header class="demo-drawer-header">
       		<div class="demo-avatar-dropdown">
-      			<span>${usuarioLogado.usuario.nome}</span>
+      			<span>${usuarioLogado.usuario.nome} - ${usuarioLogado.usuario.empresa.nome }</span>
       			<div class="mdl-layout-spacer"></div>
       		</div>
       	</header>
       	<nav class="demo-navigation mdl-navigation mdl-color--blue-grey-800">
-      		<a class="mdl-navigation__link" href="${linkTo[UnidadeController].telaInicial}"><i class="mdl-color-text--blue-grey-400 material-icons" role="presentation">home</i>Unidades</a>
+      		<a class="mdl-navigation__link" href="${linkTo[UnidadeController].telaInicial}"><i class="mdl-color-text--blue-grey-400 material-icons" role="presentation">home</i>Página Inicial</a>
       	</nav>
       </div>
       <main class="mdl-layout__content mdl-color--grey-100">
-      	<form action="<c:url value="/unidade/adicionar"/>" method="post">
-      		<span class="mdl-chip">
-	    		<span class="mdl-chip__text">Adicionar Unidade</span>
-			</span>
-			<br>
-			<div class="mdl-textfield mdl-js-textfield">
-	      		<input class="mdl-textfield__input" type="text" id="nomeEmpresa" name="unidade.nome"/>
-	    		<label class="mdl-textfield__label" for="nomeEmpresa">Nome da Unidade*</label>
-	      	</div>
-	      	<br>
-	      	<div class="mdl-textfield mdl-js-textfield">
-	      		<textarea class="mdl-textfield__input" rows="2" id="descricaoEmpresa" name="unidade.endereco"></textarea>
-				<label class="mdl-textfield__label" for="descricaoEmpresa">Endereço da Unidade*</label>
-			</div>
-			<br>
-			<div class="mdl-textfield mdl-js-textfield">
-	      		<textarea class="mdl-textfield__input" rows="2" id="descricaoEmpresa" name="unidade.descricao"></textarea>
-				<label class="mdl-textfield__label" for="descricaoEmpresa">Descrição da Unidade</label>
-			</div>
-			<br>
-			<button class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored mdl-color-text--white">
-	  			Adicionar
-	  		</button>
-      	</form>
+      	<c:if test="${mensagem != null }">
+      	<span class="mdl-chip">
+    		<span class="mdl-chip__text">${mensagem }</span>
+		</span>	
+		</c:if>
+		<br>
+		<table class="mdl-data-table mdl-js-data-table mdl-shadow--2dp" style="margin:auto;" width="70%">
+			<thead>
+    			<tr>
+    				<th class="mdl-data-table__cell--non-numeric">Nome</th>
+    				<th class="mdl-data-table__cell--non-numeric">Unidade</th>
+    			</tr>
+  			</thead>
+  			<tbody>
+  				<c:forEach items="${pontosDeAtendimento }" var="ponto" varStatus="status">
+  					<tr>
+  						<td class="mdl-data-table__cell--non-numeric">${ponto.nome}</td>
+  						<td class="mdl-data-table__cell--non-numeric">${ponto.unidade.nome}</td>
+  					</tr>
+  				</c:forEach>
+  			</tbody>
+		</table>
       </main>
     </div>
+    <a href="${linkTo[PontoDeAtendimentoController].adicionar(idUnidade)}" id="view-source" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--colored mdl-color-text--white">Adicionar Ponto</a>
     <script src="https://code.getmdl.io/1.3.0/material.min.js"></script>
   </body>
 </html>

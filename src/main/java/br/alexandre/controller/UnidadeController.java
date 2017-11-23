@@ -50,6 +50,8 @@ public class UnidadeController {
 			
 			unidade.setEmpresa(empresa);
 			unidadeDAO.adicionar(unidade);
+			
+			result.include("mensagem", "Unidade adicionada com sucesso");
 			result.redirectTo(UnidadeController.class).telaInicial();
 		}
 	}

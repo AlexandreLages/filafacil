@@ -9,21 +9,24 @@ import br.alexandre.model.Usuario;
 import br.com.caelum.vraptor.Controller;
 import br.com.caelum.vraptor.Get;
 import br.com.caelum.vraptor.Post;
+import br.com.caelum.vraptor.Result;
 
 @Controller
 public class EmpresaController {
 
+	private Result result;
 	private EmpresaDAO empresaDAO;
 	private UsuarioDAO usuarioDAO;
 	
 	protected EmpresaController() {
-		this(null, null);
+		this(null, null, null);
 	}
 	
 	@Inject
-	public EmpresaController(EmpresaDAO empresaDAO, UsuarioDAO usuarioDAO) {
+	public EmpresaController(EmpresaDAO empresaDAO, UsuarioDAO usuarioDAO, Result result) {
 		this.empresaDAO = empresaDAO;
 		this.usuarioDAO = usuarioDAO;
+		this.result = result;
 	}
 	
 	@Get("/empresa/adicionar")
@@ -35,6 +38,9 @@ public class EmpresaController {
 		
 		usuarioDAO.adicionar(usuario);
 		empresaDAO.adicionar(empresa);
+		
+		result.include("mensagem", "Empresa adicionada com sucesso");
+		result.redirectTo(LoginController.class).login();
 	}
 
 	@Get

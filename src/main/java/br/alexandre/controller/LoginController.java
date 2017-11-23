@@ -7,6 +7,7 @@ import br.alexandre.model.Usuario;
 import br.alexandre.model.UsuarioLogado;
 import br.com.caelum.vraptor.Controller;
 import br.com.caelum.vraptor.Get;
+import br.com.caelum.vraptor.Path;
 import br.com.caelum.vraptor.Post;
 import br.com.caelum.vraptor.Result;
 
@@ -41,5 +42,11 @@ public class LoginController {
 				result.redirectTo(EmpresaController.class).telaInicial();
 			}
 		}
+	}
+	
+	@Path("/usuario/logout")
+	public void logout() {
+		usuarioLogado.logout();
+		result.redirectTo(LoginController.class).login();
 	}
 }

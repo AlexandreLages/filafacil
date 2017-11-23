@@ -42,6 +42,7 @@
       <div class="demo-drawer mdl-layout__drawer mdl-color--blue-grey-900 mdl-color-text--blue-grey-50">
       </div>
       <main class="mdl-layout__content mdl-color--grey-100">
+      	${mensagem }
       	<form action="<c:url value="/empresa/adicionar"/>" method="post">
       		<span class="mdl-chip">
     			<span class="mdl-chip__text">Dados da Empresa</span>

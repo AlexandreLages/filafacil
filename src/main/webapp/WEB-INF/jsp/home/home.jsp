@@ -465,7 +465,7 @@
           <div class="col-md-4">
             <ul class="list-inline quicklinks">
               <li class="list-inline-item">
-                <a href="#">Administração</a>
+                <a href="${linkTo[LoginController].login }">Administração</a>
               </li>
             </ul>
           </div>

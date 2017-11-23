@@ -43,9 +43,11 @@
       </div>
       <main class="mdl-layout__content mdl-color--grey-100">
       	<form action="<c:url value="/login/login"/>" method="post">
-      		<span class="mdl-chip">
-    			<span class="mdl-chip__text">Login</span>
-			</span>
+      		<c:if test="${mensagem != null }">
+      			<span class="mdl-chip">
+    				<span class="mdl-chip__text">${mensagem}</span>
+				</span>
+      		</c:if>
 			<br>
       		<div class="mdl-textfield mdl-js-textfield">
       			<input class="mdl-textfield__input" type="text" id="login" name="login"/>
